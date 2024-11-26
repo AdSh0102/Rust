@@ -1,11 +1,18 @@
 fn main() {
-    // let mut v: Vec<i32> = vec![1, 2, 3];
-    // let mut num: &i32 = &v[2];
-    // // v.push(4);
-    // println!("Third element is {}", *num);
-    let s1 = String::from("hello");
-    let s2 = s1;
-
-    println!("{s1}, world!");
+    let s: String = String::from("Hello, world");
+    let first_word: &str = first_word(&s);
+    println!("{first_word}");
 
 }
+
+fn first_word(s:&String) -> &str {
+    let bytes = s.as_bytes();
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' '{
+            return &s[0..i];
+        }
+    }
+    return &s[..];
+}
+
+
